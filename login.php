@@ -1,3 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+  
+    <title>LOGIN JOBIT</title>
+    <link rel="canonical" href="">
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="assets/style.css" rel="stylesheet">
+</head>
+<body class="text-center">
+<div class="container">
+    <form class="form-signin">
+        <img class="mb-4" src="assets/img/logoJobit.png" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">©2021</p>
+    </form>
+
+
 
 <?php
 
@@ -61,22 +115,13 @@ if(isset($_GET["code"]))
 if(!isset($_SESSION['access_token']))
 {
  //Create a URL to obtain user authorization
- $login_button = '<a href="'.$google_client->createAuthUrl().'"><img src="sign-in-with-google.png" /></a>';
+ $login_button = '<a href="'.$google_client->createAuthUrl().'"><img src="assets/img/loginWithGoogle.png" alt width="300" height="" /></a>';
 }
 
 ?>
-<html>
- <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>PHP Login using Google Account</title>
-  <meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
-  
- </head>
- <body>
-  <div class="container">
+<!-- ///////////////// -->
+ 
+
    <br />
    <h2 align="center">PHP Login using Google Account</h2>
    <br />
@@ -96,6 +141,7 @@ if(!isset($_SESSION['access_token']))
    }
    ?>
    </div>
+  </div>
   </div>
  </body>
 </html>
