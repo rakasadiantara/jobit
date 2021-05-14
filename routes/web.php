@@ -22,5 +22,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');//dikasih nama job.show sehingga mudah memanggilnya.
 Route::get('/company/{id}/{company}', 'CompanyController@index')->name('company.index');
 Route::get('/user/profile', 'UserProfileController@index');
+Route::post('/profile/store', 'UserProfileController@store')->name('profile.store');
+Route::post('/profile/coverletter', 'UserProfileController@coverletter')->name('profile.coverletter');
+Route::post('/profile/resume', 'UserProfileController@resume')->name('profile.resume');
+Route::post('/profile/avatar', 'UserProfileController@avatar')->name('profile.avatar');
+
+
 
 
