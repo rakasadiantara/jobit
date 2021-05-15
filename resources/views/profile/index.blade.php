@@ -24,6 +24,12 @@
                         <br>
                         <button class="btn btn-primary">Update</button>
                     </div>
+                    {{-- Error Exception jika avatar dikosongkan--}}
+                    @if ($errors->has('avatar'))
+                    <div class='error' style="color: red">
+                        &nbsp; {{$errors -> first('avatar')}}
+                    </div>                            
+                    @endif
                 </div>
             </form>
         </div>
@@ -43,6 +49,28 @@
                                 {{Auth::user()->profile->address}}
                             </textarea>
                         </div>
+                        {{-- Error Exception jika address dikosongkan--}}
+                        @if ($errors->has('address'))
+                            <div class='error' style="color: red">
+                            {{$errors -> first('address')}}
+                            </div>                            
+                        @endif
+
+                        <div class="form-group">
+                            <label for="">
+                                Phone Number
+                            </label>
+                            <input type="text" name="phone_number" class="form-control" id=""
+                                    value="{{Auth::user()->profile->phone_number}}">
+                        </div>
+                        {{-- Error Exception jika Biodata dikosongkan--}}
+                        @if ($errors->has('phone_number'))
+                            <div class='error' style="color: red">
+                            {{$errors -> first('phone_number')}}
+                            </div>                            
+                        @endif
+
+
                         <div class="form-group">
                             <label for="">
                                 Experience
@@ -51,6 +79,13 @@
                                 {{Auth::user()->profile->experience}}
                             </textarea>
                         </div>
+                        {{-- Error Exception jika experience dikosongkan--}}
+                        @if ($errors->has('experience'))
+                            <div class='error' style="color: red">
+                            {{$errors -> first('experience')}}
+                            </div>                            
+                        @endif
+
                         <div class="form-group">
                             <label for="">
                                 Biodata
@@ -59,6 +94,13 @@
                                 {{Auth::user()->profile->bio}}
                             </textarea>
                         </div>
+                        {{-- Error Exception jika Biodata dikosongkan--}}
+                        @if ($errors->has('bio'))
+                            <div class='error' style="color: red">
+                            {{$errors -> first('bio')}}
+                            </div>                            
+                        @endif
+
                         <div class="form-group">
                             <button class="btn btn-success">Submit</button>
                         </div>
@@ -80,6 +122,7 @@
                     <p><b>Name : </b>{{Auth::user()->name}}</p>
                     <p><b>Email : </b>{{Auth::user()->email}}</p>
                     <p><b>Address : </b>{{Auth::user()->profile->address}}</p>
+                    <p><b>Phone Number : </b>{{Auth::user()->profile->phone_number}}</p>
                     <p><b>Experience : </b>{{Auth::user()->profile->experience}}</p>
                     <p><b>Bio : </b>{{Auth::user()->profile->bio}}</p>
                     <p><b>Member since : </b>{{date('d F Y', strtotime(Auth::user()->profile->created_at))}}</p>
@@ -112,6 +155,12 @@
                         <br>
                         <button class="btn btn-primary">Update</button>
                     </div>
+                    {{-- Error Exception jika cover_letter dikosongkan--}}
+                    @if ($errors->has('cover_letter'))
+                    <div class='error' style="color: red">
+                        &nbsp; {{$errors -> first('cover_letter')}}
+                    </div>                            
+                    @endif
                 </div>
             </form>
 
@@ -126,6 +175,12 @@
                         <br>
                         <button class="btn btn-primary">Update</button>
                     </div>
+                    {{-- Error Exception jika resume dikosongkan--}}
+                     @if ($errors->has('resume'))
+                    <div class='error' style="color: red">
+                    &nbsp; {{$errors -> first('resume')}}
+                    </div>                            
+                    @endif
                 </div>
             </form>
 
