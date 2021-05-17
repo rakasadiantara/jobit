@@ -114,7 +114,7 @@
                         <div class="form-group">
                             <button class="btn btn-success">Submit</button>
                         </div>
-                        @if(Session::has('message'))
+                        @if(Session::has('message'))  {{--Pesan yang keluar ketika berhasil diperbaharui--}}
                             <div class="alert alert-success">
                                 {{Session::get('message')}}
                             </div>
@@ -130,9 +130,11 @@
                 </div>
                 <div class="card-body">
                    <p><b>Company Name :</b> {{Auth::user()->company->cname}}</p>
-                   <p><b>Company Email :</b> {{Auth::user()->email}}</p>
-                   <p><b>Website :</b> {{Auth::user()->company->website}}</p>
+                   <p><b>Email :</b> {{Auth::user()->email}}</p>
+                   <p><b>Address :</b> {{Auth::user()->address}}</p>
+                   <p><b>Company Page :</b> <a href="company/{{Auth::user()->company->slug}}">View</a></p>
                    <p><b>Phone :</b> {{Auth::user()->company->phone}}</p>
+                   <p><b>Website :</b> {{Auth::user()->company->website}}</p>
                    <p><b>Slogan :</b> {{Auth::user()->company->slogan}}</p>
                    <p><b>Description :</b> {{Auth::user()->company->description}}</p>
                 </div>
