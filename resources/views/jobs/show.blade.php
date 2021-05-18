@@ -4,10 +4,17 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if(Session::has('message'))
+            <div class="alert alert-success">
+                {{Session::get('message')}}
+            </div>
+            @endif
             <div class="card">
+
                 <div class="card-header">{{$job->title}}</div>
 
                 <div class="card-body">
+
                     <p>
                         <h3>Description</h3>
                         {{$job->description}}
@@ -34,9 +41,15 @@
                     <p>Estimates: {{$job->last_date}}</p>                    
                 </div>
             </div>
-            @if (Auth::check()) <!--Agar yang sudah login saja muncul button applynya --> 
-            <button style="width: 100%" class="btn btn-warning">Apply</button>
+            @if (Auth::user()->user_type== 'seeker')                    <!--Agar yang sudah login saja muncul button applynya khusus seeker--> 
+            @if (!$job->checkApplication())                    {{-- Agar user hanya bisa apply 1 pekerjaan--}}
+            <form action="{{route('jobs.apply', [$job->id])}}" method="POST">
+                @csrf
+                <button style="width: 100%" class="btn btn-warning">Apply</button>
+            </form>
             @endif
+            @endif
+
         </div>
     </div>
 </div>

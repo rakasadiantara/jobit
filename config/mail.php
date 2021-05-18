@@ -29,6 +29,7 @@ return [
     |
     */
 
+    // 'host' => env('MAIL_HOST', 'mailtrap.io'),
     'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
@@ -40,8 +41,15 @@ return [
     | users of the application. Like the host we have set this value to
     | stay compatible with the Mailgun e-mail application by default.
     |
+    | MAIL_MAILER=smtp
+    | MAIL_HOST=smtp.mailtrap.io
+    | MAIL_PORT=2525
+    | MAIL_USERNAME=b054040b129b1f
+    | MAIL_PASSWORD=633b4e170ced0c
+    | MAIL_ENCRYPTION=tls
     */
 
+    // 'port' => env('MAIL_PORT', 2525),
     'port' => env('MAIL_PORT', 587),
 
     /*
@@ -57,7 +65,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'name' => env('MAIL_FROM_NAME', 'Testing'),
     ],
 
     /*
@@ -133,4 +141,12 @@ return [
 
     'log_channel' => env('MAIL_LOG_CHANNEL'),
 
+    // untuk fix stream_socket_enable_crypto(): SSL operation failed with code 1
+    'stream' => [
+        'ssl' => [
+            'allow_self_signed' => true,
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+        ],
+        ],
 ];

@@ -35,9 +35,37 @@
                         </a>
                     </td>
                 </tr>
-            @endforeach()
+            @endforeach
             </tbody>
         </table>
     </div>
+    <div>
+        <a href="{{route('alljobs')}}">
+            <button style="width:100%" class="btn btn-warning">Browse All Jobs</button>
+        </a>
+    </div>
+    <br>
+    <br>
+    <h1>Feature Company</h1>
+
+    <div class="container">
+        <div class="row">
+        @foreach ($companies as $company)
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;">
+                    {{-- <img class="card-img-top" src="..." alt="Card image cap"> --}}
+                    <div class="card-body">
+                      <h5 class="card-title">{{$company->cname}}</h5>
+                      <p class="card-text">{{str_limit($company->description, 20)}}</p>
+                      <a href="{{route('company.index', [$company->id, $company->slug])}}" class="btn btn-primary">Visit Company</a>
+                    </div>
+                  </div>
+            </div>
+        @endforeach
+        </div>
+    </div>
+    
+
 </div>
+
 @endsection

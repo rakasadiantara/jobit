@@ -22,6 +22,6 @@ class EmployerProfileController extends Controller
             'slug' => str_slug(request('cname')),
 
         ]);
-        return redirect()->to('login');
+        return redirect()->to('login')->with('message', 'Email Must Be Verified');
     }
 }

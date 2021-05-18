@@ -6,7 +6,7 @@
         <div class="company-profile">
             {{-- <img src="{{asset('cover/banner_shopee.png')}}" alt="" width="1150" height="200" > --}}
             @if (empty(Auth::user()->company->cover_photo))
-                <img style="border-radius: 50px; width: 100%" src="{{asset('avatar/shopee.png')}}" alt="" width="100" height="200">
+                <img style="border-radius: 0px; width: 100%" src="{{asset('cover/banner_shopee.png')}}" alt="" width="100" height="200">
             @else
                 <img style="border-radius: 50px; width: 100%" 
                      src="{{asset('uploads/cover')}}/{{Auth::user()->company->cover_photo}}" 
@@ -17,12 +17,13 @@
             <br>
             {{-- <img src="{{asset('avatar/shopee.png')}}" alt="" width="100"> --}}
             @if (empty(Auth::user()->company->logo))
-                <img style="border-radius: 50px; width: 100%" src="{{asset('avatar/shopee.png')}}" alt="" width="100" height="200">
+                <img style="border-radius: 50px; width: 20%" src="{{asset('avatar/shopee.png')}}" alt="" width="100" height="200">
             @else
                 <img style="border-radius: 50px; width: 20%" 
                      src="{{asset('uploads/avatar')}}/{{Auth::user()->company->logo}}" 
                      alt="" width="100" height="200">
             @endif
+
             <h1>{{$company->cname}}</h1>
             <p>{{$company->description}}</p>
             <p><b>Slogan :</b> &nbsp; {{$company->slogan}}</p>

@@ -16,7 +16,8 @@
 // });
 Route::get('/', 'JobController@index');
 
-Auth::routes();
+// Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -25,6 +26,9 @@ Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');//dikasi
 Route::get('/jobs/create', 'JobController@create')->name('jobs.create');
 Route::post('/jobs/store', 'JobController@store')->name('jobs.store');
 Route::get('/jobs/myjobs', 'JobController@myjobs')->name('jobs.myjobs');
+Route::post('/jobs/apply/{id}', 'JobController@apply')->name('jobs.apply');
+Route::get('/jobs/applicants', 'JobController@applicants');
+Route::get('/jobs/alljobs', 'JobController@alljobs')->name('alljobs');
 
 // Company Profile
 Route::get('/company/{id}/{company}', 'CompanyController@index')->name('company.index');
@@ -39,6 +43,8 @@ Route::post('/profile/store', 'UserProfileController@store')->name('profile.stor
 Route::post('/profile/coverletter', 'UserProfileController@coverletter')->name('profile.coverletter');
 Route::post('/profile/resume', 'UserProfileController@resume')->name('profile.resume');
 Route::post('/profile/avatar', 'UserProfileController@avatar')->name('profile.avatar');
+
+// Route::post('/login', 'UserProfileLoginController@login')->middleware('seeker');
 
 // Employer Profile
 Route::view('/employer/profile', 'auth.emp-register')->name('employer.registration');

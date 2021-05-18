@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs;
+use Auth;
+use App\Job;
 use App\Company;
 use App\Http\Requests\JobPostRequest;
 use Illuminate\Http\Request;
@@ -10,11 +11,13 @@ use Illuminate\Http\Request;
 class JobController extends Controller
 {
     public function index(){
-        $jobs = Jobs::all()->take(10);//take digunakan untuk melimitasi data yang diambil
-        return view('welcome', compact('jobs'));
+        //$jobs = Job::all()->take(10);//take digunakan untuk melimitasi data yang diambil
+        $jobs = Job::latest()->limit(10)->get();
+        $companies = Company::latest()->limit(12)->get();
+        return view('welcome', compact('jobs', 'companies'));
     }
 
-    public function show($id, Jobs $job){
+    public function show($id, Job $job){
         return view('jobs.show', compact('job'));
     }
 
@@ -26,7 +29,7 @@ class JobController extends Controller
         $user_id = auth()->user()->id;
         $company = Company::where('user_id', $user_id)->first();
         $company_id = $company->id;
-        Jobs::create([
+        Job::create([
             'user_id' => $user_id,
             'company_id' => $company_id,
             'title' => request('title'),
@@ -45,7 +48,39 @@ class JobController extends Controller
     }
 
     public function myJobs() {
-        $jobs = Jobs::where('user_id', auth()->user()->id)->get();
+        $jobs = Job::where('user_id', auth()->user()->id)->get();
         return view ('jobs.myjobs', compact('jobs'));
+    }
+
+    public function apply (Request $request, $id){
+        $jobId = Job::find($id);
+        $jobId->users()->attach(Auth::user()->id);
+        return redirect()->back()->with('message', 'Job Applied Succesfully');
+    }
+
+    public function applicants(){
+        $applicants = Job::has('users') -> where('user_id', auth()->user()->id)->get();
+        return view('jobs.applicants', compact('applicants'));
+    }
+
+    public function alljobs(Request $request) {
+        $keyword = request('title');
+        $type = request('type');
+        $category = request('category_id');
+        $address = request('address');
+        
+        if($keyword||$type||$category||$address){ // Pembuatan logika filter pekerjaan
+            $jobs = Job::where('title', 'LIKE', '%'.$keyword.'%')
+                ->orWhere('type', $type)
+                ->orWhere('category_id', $category)
+                ->orWhere('address', $address)
+                ->paginate(10);
+
+            return view ('jobs.alljobs', compact('jobs'));
+        } else {
+            $jobs = Job::paginate(10);
+
+            return view ('jobs.alljobs', compact('jobs'));
+        }
     }
 }
