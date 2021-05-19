@@ -29,6 +29,12 @@ Route::get('/jobs/myjobs', 'JobController@myjobs')->name('jobs.myjobs');
 Route::post('/jobs/apply/{id}', 'JobController@apply')->name('jobs.apply');
 Route::get('/jobs/applicants', 'JobController@applicants');
 Route::get('/jobs/alljobs', 'JobController@alljobs')->name('alljobs');
+Route::post('/applications/{id}', 'JobController@apply')->name('apply');
+
+// Save and Unsave Job
+Route::post('/save/{id}', 'FavoriteController@saveJob');
+Route::post('/unsave/{id}', 'FavoriteController@unSaveJob');
+
 
 // Company Profile
 Route::get('/company/{id}/{company}', 'CompanyController@index')->name('company.index');

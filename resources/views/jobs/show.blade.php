@@ -43,11 +43,14 @@
             </div>
             @if (Auth::user()->user_type== 'seeker')                    <!--Agar yang sudah login saja muncul button applynya khusus seeker--> 
             @if (!$job->checkApplication())                    {{-- Agar user hanya bisa apply 1 pekerjaan--}}
-            <form action="{{route('jobs.apply', [$job->id])}}" method="POST">
+            {{-- <form action="{{route('jobs.apply', [$job->id])}}" method="POST">
                 @csrf
                 <button style="width: 100%" class="btn btn-warning">Apply</button>
-            </form>
+            </form> --}}
+                <apply-component :jobid={{$job->id}}> </apply-component>
             @endif
+            <br>
+                <favorite-component :jobid={{$job->id}} :faborited={{$job->checkSaved() ? 'true':'false'}}> </favorite-component>
             @endif
 
         </div>
