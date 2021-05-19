@@ -1,5 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\ListAdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,13 +17,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::get('/', 'JobController@index');
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');//dikasih nama job.show sehingga mudah memanggilnya.
-
+Route::get('/admin',[AdminController::class,'dashboard'])->name('dashboard');
+Route::get('/admin/user',[UserController::class,'view'])->name('viewuser');
+Route::get('/admin/job',[JobController::class,'view'])->name('viewjob');
+Route::get('/admin/admin',[ListAdminController::class,'view'])->name('viewadmin');
