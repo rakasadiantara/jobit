@@ -1,0 +1,75 @@
+div {
+    display: block;
+}
+
+.container {
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.app-page-container, .page-container {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.app-page-container, .page-container {
+    position: relative;
+    padding-bottom: 16px;
+}
+
+.card {
+    background-color: #fff;
+    margin-bottom: 24px;
+    margin-right: -10px;
+    margin-left: -10px;
+}
+
+.card .card-body {
+    padding: 100px;
+}
+
+.row {
+    margin-right: -10px;
+    margin-left: -10px;
+}
+
+.profile-candidate-name {
+    text-align: center;
+    max-width: 280px;
+}
+
+.profile-candidate-name, .profile-candidate-pic {
+    margin: 0 auto 16px;
+}
+
+.profile-list-items>li {
+    margin: 0 0 20px;
+    line-height: 1;
+}
+
+.fa-ul>li {
+    position: relative;
+}
+
+.fa-li.fa-lg {
+    left: -1.85714em;
+}
+
+.text-muted {
+    color: #6c7881;
+}
+
+.search {
+    background: darkgrey;
+    border: 1px solid grey;
+    display: inline-block;
+}
+
+.search input{
+    background-color: transparent;
+    border: none;
+    padding: 5px 3px;
+    color:#fff;
+}

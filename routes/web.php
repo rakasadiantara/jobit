@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,13 +14,8 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-Route::get('/', 'JobController@index');
+Route::get('/', function () {
+    return view('profile');
+});
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');//dikasih nama job.show sehingga mudah memanggilnya.
-
+// Route::get('/', 'ProfileController@home');
