@@ -31,6 +31,10 @@ Route::get('/jobs/applicants', 'JobController@applicants');
 Route::get('/jobs/alljobs', 'JobController@alljobs')->name('alljobs');
 Route::post('/applications/{id}', 'JobController@apply')->name('apply');
 
+// Search Jobs With Vue Js
+Route::get('/jobs/search', 'JobController@searchJob');
+
+
 // Save and Unsave Job
 Route::post('/save/{id}', 'FavoriteController@saveJob');
 Route::post('/unsave/{id}', 'FavoriteController@unSaveJob');

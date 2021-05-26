@@ -20,7 +20,7 @@
                         {{$job->description}}
                     </p>
                     <p>
-                        <h3>Duties</h3>
+                        <h3>Responsibilities</h3>
                         {{$job->roles}}
                     </p>
                 </div>

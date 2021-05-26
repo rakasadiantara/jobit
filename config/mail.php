@@ -29,8 +29,8 @@ return [
     |
     */
 
-    // 'host' => env('MAIL_HOST', 'mailtrap.io'),
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'mailtrap.io'),
+    // 'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
 
     /*
     |--------------------------------------------------------------------------
@@ -47,10 +47,17 @@ return [
     | MAIL_USERNAME=b054040b129b1f
     | MAIL_PASSWORD=633b4e170ced0c
     | MAIL_ENCRYPTION=tls
+
+    MAIL_DRIVER=smtp
+    MAIL_HOST=smtp.gmail.com
+    MAIL_PORT=587
+    MAIL_USERNAME=d3ita2019@gmail.com
+    MAIL_PASSWORD=9102ati3d
+    MAIL_ENCRYPTION=tls
     */
 
-    // 'port' => env('MAIL_PORT', 2525),
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 2525),
+    // 'port' => env('MAIL_PORT', 587),
 
     /*
     |--------------------------------------------------------------------------
@@ -65,7 +72,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Testing'),
+        'name' => env('MAIL_FROM_NAME', 'JOBIT'),
     ],
 
     /*

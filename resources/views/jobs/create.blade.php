@@ -27,12 +27,13 @@
                         @endif
 
                         <div class="form-group">
-                            <label for="">Roles</label>
-                            <input type="text" name="roles" id="" class="form-control">
-                        </div>
-                        <div class="form-group">
                             <label for="">Description</label>
                             <textarea name="description" id="" cols="30" rows="4" class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Responsibilities</label>
+                            <textarea name="roles" id="" cols="30" rows="4" class="form-control"></textarea>
+                            {{-- <input type="text" name="roles" id="" class="form-control"> --}}
                         </div>
                         <div class="form-group">
                             <label for="">Position</label>
