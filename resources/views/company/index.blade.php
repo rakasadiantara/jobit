@@ -6,7 +6,7 @@
         <div class="company-profile">
             {{-- <img src="{{asset('cover/banner_shopee.png')}}" alt="" width="1150" height="200" > --}}
             @if (empty(Auth::user()->company->cover_photo))
-                <img style="border-radius: 50px; width: 100%" src="{{asset('cover/banner_shopee.png')}}" alt="" width="100" height="200">
+                <img style="border-radius: 0px; width: 100%" src="{{asset('cover/it_software.png')}}" alt="" width="200px">
             @else
                 <img style="border-radius: 50px; width: 100%" 
                      src="{{asset('uploads/cover')}}/{{Auth::user()->company->cover_photo}}" 
@@ -17,9 +17,9 @@
             <br>
             {{-- <img src="{{asset('avatar/shopee.png')}}" alt="" width="100"> --}}
             @if (empty(Auth::user()->company->logo))
-                <img style="border-radius: 50px; width: 50%" src="{{asset('avatar/shopee.png')}}" alt="" width="100" height="200">
+                <img style="border-radius: 50px; " src="{{asset('avatar')}}/{{$company->logo}}" alt="" width="200px">
             @else
-                <img style="border-radius: 50px; width: 50%" 
+                <img style="border-radius: 50px; " 
                      src="{{asset('uploads/avatar')}}/{{Auth::user()->company->logo}}" 
                      alt="" width="100" height="200">
             @endif
@@ -28,13 +28,8 @@
             <p>{{$company->description}}</p>
             <p><b>Slogan :</b> &nbsp; {{$company->slogan}}</p>
             <p><b>Address :</b> &nbsp; {{$company->address}}</p>
-            <p><b>Phone :</b> &nbsp; {{$company->phone}}</p>
-            <p><b>Website :</b> &nbsp; {{$company->website}}</p>    
-            {{-- <p>{{$company->description}}</p>
-            <p><b>Slogan :</b> &nbsp; {{Auth::user()->company->slogan}}</p>
-            <p><b>Address :</b> &nbsp; {{Auth::user()->company->address}}</p>
-            <p><b>Phone :</b> &nbsp; {{Auth::user()->company->phone}}</p>
-            <p><b>Website :</b> &nbsp; {{Auth::user()->company->website}}</p> --}}
+            <p><b>Contact :</b> &nbsp; {{$company->phone}}</p>
+            <p><b>Website :</b> &nbsp; {{$company->website}}</p>
             </p>
         </div>
 
@@ -50,7 +45,7 @@
             @foreach($company->jobs as $job)    
                 <tr>
                     <td>
-                        <img src="{{asset('avatar/shopee.png')}}" alt="" width="80">
+                        <img src="{{asset('avatar')}}/{{$job->job_image}}" alt="" width="80">
                     </td>
                     <td>
                         Position : {{$job->position}}

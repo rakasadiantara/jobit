@@ -22,7 +22,6 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Jobs Profile
-Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');//dikasih nama job.show sehingga mudah memanggilnya.
 Route::get('/jobs/create', 'JobController@create')->name('jobs.create');
 Route::post('/jobs/store', 'JobController@store')->name('jobs.store');
 Route::get('/jobs/myjobs', 'JobController@myjobs')->name('jobs.myjobs');
@@ -61,5 +60,16 @@ Route::view('/employer/profile', 'auth.emp-register')->name('employer.registrati
 Route::post('/employer/profile/store', 'EmployerProfileController@store')->name('employer.store');
 
 
+Route::group(['middleware' => 'seeker'], function(){
 
+Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');//dikasih nama job.show sehingga mudah memanggilnya.
+    
 
+});
+
+// Route::group(['middleware' => 'employer'], function(){
+
+//     Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');//dikasih nama job.show sehingga mudah memanggilnya.
+        
+    
+// });

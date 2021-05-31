@@ -131,7 +131,7 @@
                 <div class="card-body">
                    <p><b>Company Name :</b> {{Auth::user()->company->cname}}</p>
                    <p><b>Email :</b> {{Auth::user()->email}}</p>
-                   <p><b>Address :</b> {{Auth::user()->company->address}}</p>
+                   <p><b>Address :</b> {{Auth::user()->address}}</p>
                    <p><b>Company Page :</b> <a href="company/{{Auth::user()->company->slug}}">View</a></p>
                    <p><b>Phone :</b> {{Auth::user()->company->phone}}</p>
                    <p><b>Website :</b> {{Auth::user()->company->website}}</p>

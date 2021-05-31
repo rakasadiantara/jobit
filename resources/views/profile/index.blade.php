@@ -6,28 +6,28 @@
         <div class="col-md-3">
             {{-- <img style="border-radius: 50px; width: 100%" src="{{asset('avatar/shopee.png')}}" alt="" width="100" height="200"> --}}
             @if (empty(Auth::user()->profile->avatar))
-                <img style="border-radius: 50px; width: 100%" src="{{asset('avatar/shopee.png')}}" alt="" width="100" height="200">
+                <img class="rounded" style="width: 100%" src="{{asset('avatar/shopee.png')}}" alt="" width="100" height="200">
             @else
-                <img style="border-radius: 50px; width: 100%" 
+                <img class="rounded" style="width: 100%" 
                      src="{{asset('uploads/avatar')}}/{{Auth::user()->profile->avatar}}" 
                      alt="" width="100" height="300">
             @endif
             <form action="{{route('profile.avatar')}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <br>
-                <div class="card">
-                    <div class="card-header">
-                        Change Your Photo Profile!
+                <div class="pt-3"></div>
+                <div class="card rounded">
+                    <div class="card-header" style="background-color : #114386;">
+                        <h6 class="text text-light text-center">Change Your Profile Picture!</h6>
                     </div>
                     <div class="card-body">
                         <input class="form-control" type="file" name="avatar" id="">
-                        <br>
-                        <button class="btn btn-primary">Update</button>
+                        <div class="pt-3"></div>
+                        <button class="btn btn-outline-primary btn-block">Update</button>
                     </div>
                     {{-- Error Exception jika avatar dikosongkan--}}
                     @if ($errors->has('avatar'))
                     <div class='error' style="color: red">
-                        &nbsp; {{$errors -> first('avatar')}}
+                         {{$errors -> first('avatar')}}
                     </div>                            
                     @endif
                 </div>
@@ -35,8 +35,8 @@
         </div>
         <div class="col-md-5">
             <div class="card">
-                <div class="card-header">
-                    Update Your Information
+                <div class="card-header text text-light text-center" style="background-color : #114386;">
+                    <h5>Update Your Information</h5>
                 </div>
                 <div class="card-body">
                     <form action="{{route('profile.store')}}" method="POST">
@@ -102,7 +102,8 @@
                         @endif
 
                         <div class="form-group">
-                            <button class="btn btn-success">Submit</button>
+                            <button class="btn btn-outline-success">Submit</button>
+                            <button class="btn btn-outline-danger" type="reset">Cancel</button>
                         </div>
                         @if(Session::has('message'))
                             <div class="alert alert-success">
@@ -115,76 +116,113 @@
         </div>
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header">
-                    User Details
+                <div class="card-header text text-light text-center" style="background-color : #114386;">
+                    <h5>User Details</h5>
                 </div>
                 <div class="card-body">
-                    <p><b>Name : </b>{{Auth::user()->name}}</p>
-                    <p><b>Email : </b>{{Auth::user()->email}}</p>
-                    <p><b>Address : </b>{{Auth::user()->profile->address}}</p>
-                    <p><b>Phone Number : </b>{{Auth::user()->profile->phone_number}}</p>
-                    <p><b>Experience : </b>{{Auth::user()->profile->experience}}</p>
-                    <p><b>Bio : </b>{{Auth::user()->profile->bio}}</p>
-                    <p><b>Member since : </b>{{date('d F Y', strtotime(Auth::user()->profile->created_at))}}</p>
-                    @if (!empty(Auth::user()->profile->cover_letter))
+                    <div class="container">
+                        <table class="table table-striped table-hover table-sm">
+                            <tbody>
+                            <tr>
+                                <td>Nama</td>
+                                <td>:</td>
+                                <td>{{Auth::user()->name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>:</td>
+                                <td>{{Auth::user()->email}}</td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td>:</td>
+                                <td>{{Auth::user()->profile->address}}</td>
+                            </tr>
+                            <tr>
+                                <td>Number</td>
+                                <td>:</td>
+                                <td>{{Auth::user()->profile->phone_number}}</td>
+                            </tr>
+                            <tr>
+                                <td>Experience</td>
+                                <td>:</td>
+                                <td>{{Auth::user()->profile->experience}}</td>
+                            </tr>
+                            <tr>
+                                <td>Bio</td>
+                                <td>:</td>
+                                <td>{{Auth::user()->profile->bio}}</td>
+                            </tr>
+                            <tr>
+                                <td>Since</td>
+                                <td>:</td>
+                                <td>{{date('d F Y', strtotime(Auth::user()->profile->created_at))}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        
+                        
+                        @if (!empty(Auth::user()->profile->cover_letter))
+                            <p>
+                                <a href="{{Storage::url(Auth::user()->profile->cover_letter)}}"><b>Cover Letter</b></a>
+                            </p>
+                        @else
+                            <p><b>Please Upload Your Cover Letter!</b></p>
+                        @endif
+    
+                        @if (!empty(Auth::user()->profile->resume))
                         <p>
-                            <a href="{{Storage::url(Auth::user()->profile->cover_letter)}}">Cover Letter</a>
+                            <a href="{{Storage::url(Auth::user()->profile->resume)}}">Resume</a>
                         </p>
-                    @else
-                        <p>Please Upload Your Cover Letter!</p>
-                    @endif
-
-                    @if (!empty(Auth::user()->profile->resume))
-                    <p>
-                        <a href="{{Storage::url(Auth::user()->profile->resume)}}">Resume</a>
-                    </p>
-                    @else
-                    <p>Please Upload Your Resume!</p>
-                    @endif
-                </div>
-            </div>
-
+                        @else
+                        <p><b>Please Upload Your Resume!</b></p>
+                        @endif
+                        </div>
+                    </div>
+            </div> 
+            <div class="pt-3"></div>
             <form action="{{route('profile.coverletter')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card">
-                    <div class="card-header">
-                        Update Cover Letter
+                    <div class="card-header text text-light text-center" style="background-color : #114386;">
+                        <h5>Update Cover Letter</h5>
                     </div>
                     <div class="card-body">
                         <input class="form-control" type="file" name="cover_letter" id="">
-                        <br>
-                        <button class="btn btn-primary">Update</button>
+                        <div class="pt-3"></div>
+                        <button class="btn btn-outline-primary btn-block">Update</button>
                     </div>
                     {{-- Error Exception jika cover_letter dikosongkan--}}
                     @if ($errors->has('cover_letter'))
                     <div class='error' style="color: red">
-                        &nbsp; {{$errors -> first('cover_letter')}}
+                         {{$errors -> first('cover_letter')}}
                     </div>                            
                     @endif
                 </div>
-            </form>
-
+            </form> 
+            <div class="pt-3"></div>
             <form action="{{route('profile.resume')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="card">
-                    <div class="card-header">
-                        Update Resume
+                    <div class="card-header text text-light text-center" style="background-color : #114386;">
+                        <h5>Update Resume</h5>
                     </div>
                     <div class="card-body">
                         <input class="form-control" type="file" name="resume" id="">
-                        <br>
-                        <button class="btn btn-primary">Update</button>
+                        <div class="pt-3"></div>
+                        <button class="btn btn-outline-primary btn-block">Update</button>
                     </div>
                     {{-- Error Exception jika resume dikosongkan--}}
                      @if ($errors->has('resume'))
                     <div class='error' style="color: red">
-                    &nbsp; {{$errors -> first('resume')}}
+                     {{$errors -> first('resume')}}
                     </div>                            
                     @endif
                 </div>
             </form>
 
         </div>
+    
 
     </div>
 </div>

@@ -20,7 +20,7 @@
                         {{$job->description}}
                     </p>
                     <p>
-                        <h3>Responsibilities</h3>
+                        <h3>Duties</h3>
                         {{$job->roles}}
                     </p>
                 </div>
@@ -47,9 +47,10 @@
                 @csrf
                 <button style="width: 100%" class="btn btn-warning">Apply</button>
             </form> --}}
+            <div class="py-2"></div>
                 <apply-component :jobid={{$job->id}}> </apply-component>
             @endif
-            <br>
+            <div class="py-2"></div>
                 <favorite-component :jobid={{$job->id}} :faborited={{$job->checkSaved() ? 'true':'false'}}> </favorite-component>
             @endif
 
